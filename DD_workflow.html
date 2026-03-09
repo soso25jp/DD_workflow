@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hướng dẫn thực hiện tài liệu DD</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --primary: #1d4ed8;
+      --primary-soft: #dbeafe;
+      --success: #166534;
+      --warn: #92400e;
+      --danger: #991b1b;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      color: white;
+      padding: 48px 24px 56px;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: 34px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 860px;
+      color: rgba(255,255,255,0.88);
+      font-size: 16px;
+    }
+
+    .toc {
+      margin-top: -26px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 22px;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .toc a {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-weight: 600;
+    }
+
+    .toc a:hover {
+      border-color: var(--primary);
+      background: #eff6ff;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin: 0 0 16px;
+      color: #0f172a;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin: 24px 0 10px;
+      color: #111827;
+    }
+
+    p { margin: 10px 0; }
+    ul, ol { margin: 10px 0 10px 20px; }
+    li { margin: 6px 0; }
+
+    .step {
+      border-left: 5px solid var(--primary);
+      background: #f8fbff;
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin: 14px 0;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-right: 6px;
+    }
+
+    .must { background: #dcfce7; color: var(--success); }
+    .check { background: #fef3c7; color: var(--warn); }
+    .skip { background: #fee2e2; color: var(--danger); }
+    .info { background: var(--primary-soft); color: var(--primary); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+    }
+
+    code, .jp {
+      font-family: "Consolas", "Courier New", monospace;
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 0.95em;
+    }
+
+    .note {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .summary-item {
+      padding: 16px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 24px 0 48px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 28px; }
+      .card { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Hướng dẫn thực hiện tài liệu DD</h1>
+      <p>Tài liệu được sắp xếp lại theo đúng trình tự công việc, giúp xác định phạm vi đối ứng, kiểm tra tài liệu cần sửa, thực hiện cập nhật và theo dõi tiến độ một cách rõ ràng, chuyên nghiệp.</p>
+    </div>
+  </header>
+
+  <main class="container toc">
+    <section class="card">
+      <h2>Mục lục</h2>
+      <div class="toc-grid">
+        <a href="#scope">1. Xác định phạm vi đối ứng</a>
+        <a href="#progress">2. Bắt đầu công việc & cập nhật tiến độ</a>
+        <a href="#reference">3. Cách tìm tài liệu liên quan</a>
+        <a href="#doc">4. Cách viết tài liệu .doc</a>
+        <a href="#excel">5. Cách viết tài liệu .excel</a>
+        <a href="#flow">6. Thứ tự làm việc đề xuất</a>
+      </div>
+    </section>
+
+    <section id="scope" class="card">
+      <h2>1. Xác định phạm vi đối ứng</h2>
+
+      <div class="step">
+        <h3>Bước 1: Kiểm tra file <span class="jp">機能変更対応マトリクス（担当会社プロットVer）</span></h3>
+        <ul>
+          <li>Tìm các đối tượng <strong>IK / IR / command</strong> mà mình phụ trách thực hiện.</li>
+          <li>Các nội dung được <strong>đánh dấu tròn (〇)</strong> là các hạng mục <strong>cần đối ứng</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <h3>Bước 2: Kiểm tra file <span class="jp">DD_機能-成果物紐づけ一覧</span></h3>
+        <p>Tại sheet <span class="jp">機能_対象資料一覧</span>, thực hiện các bước sau:</p>
+        <ol>
+          <li>Kiểm tra cột <span class="jp">[担当]</span> để xác nhận các tài liệu mình phụ trách.</li>
+          <li>Kiểm tra cột <span class="jp">[修正対象]</span> để xác định mức độ cần sửa của từng tài liệu.</li>
+          <li>Sau khi kiểm tra, ghi kết quả vào cột <span class="jp">[確認結果]</span>.</li>
+        </ol>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Ký hiệu</th>
+            <th>Ý nghĩa ở cột [修正対象]</th>
+            <th>Giá trị ghi vào [確認結果]</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge must">〇</span></td>
+            <td>Bắt buộc phải sửa</td>
+            <td><span class="jp">修正対象</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge check">△</span></td>
+            <td>Cần mở tài liệu ra kiểm tra, nếu cần thì sửa</td>
+            <td><span class="jp">必要あれば修正</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge skip">×</span></td>
+            <td>Không sửa</td>
+            <td><span class="jp">修正なし</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="progress" class="card">
+      <h2>2. Bắt đầu công việc và cập nhật tiến độ</h2>
+
+      <div class="step">
+        <h3>Bước 3: Cập nhật tiến độ trong quá trình làm</h3>
+        <p>Khi bắt đầu công việc, cập nhật phần trăm tiến độ vào các cột sau:</p>
+        <ul>
+          <li><span class="jp">[作成/修正]</span></li>
+          <li><span class="jp">[自己レビュー]</span></li>
+          <li><span class="jp">[FPT内部レビュー]</span></li>
+          <li><span class="jp">[NECレビュー]</span></li>
+        </ul>
+      </div>
+
+      <h3>Quy tắc cập nhật phần trăm</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Hạng mục</th>
+            <th>Giá trị</th>
+            <th>Ý nghĩa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="jp">[作成/修正]</span>, <span class="jp">[自己レビュー]</span></td>
+            <td>0% ～ 100%</td>
+            <td>Ghi theo mức độ hoàn thành thực tế, 100% là hoàn tất</td>
+          </tr>
+          <tr>
+            <td><span class="jp">[FPT内部レビュー]</span>, <span class="jp">[NECレビュー]</span></td>
+            <td>0%</td>
+            <td>Chưa ở trạng thái có thể review</td>
+          </tr>
+          <tr>
+            <td><span class="jp">[FPT内部レビュー]</span>, <span class="jp">[NECレビュー]</span></td>
+            <td>80%</td>
+            <td>Đang chờ review</td>
+          </tr>
+          <tr>
+            <td><span class="jp">[FPT内部レビュー]</span>, <span class="jp">[NECレビュー]</span></td>
+            <td>90%</td>
+            <td>Đang sửa lỗi theo comment review</td>
+          </tr>
+          <tr>
+            <td><span class="jp">[FPT内部レビュー]</span>, <span class="jp">[NECレビュー]</span></td>
+            <td>100%</td>
+            <td>Review hoàn tất</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <strong>Lưu ý:</strong> Sau khi sửa xong các chỉ摘, cần <strong>re-request review</strong>.
+      </div>
+    </section>
+
+    <section id="reference" class="card">
+      <h2>3. Cách tìm và đọc tài liệu liên quan</h2>
+      <ul>
+        <li>Tham khảo file: <span class="jp" contenteditable="true">Sơ đồ mapping tài liệu onboarding</span>.</li>
+        <li>Dùng file này để tra cách đọc và tìm tài liệu tương ứng khi thực hiện DD.</li>
+      </ul>
+    </section>
+
+    <section id="doc" class="card">
+      <h2>4. Cách viết tài liệu <span class="jp">.doc</span></h2>
+
+      <h3>4.1. Nguyên tắc cơ bản</h3>
+      <ul>
+        <li>Với <strong>TBL cũ</strong>, cần update thêm <strong>TBL mới tương ứng</strong> ở bên cạnh để đối chiếu.</li>
+        <li>Để xác định TBL mới tương ứng, xem chi tiết tại sheet <span class="jp">項目一覧</span> trong file <span class="jp">L2900_0400DB仕様IDアカウント管理(IK)</span>.</li>
+      </ul>
+
+      <h3>4.2. Cách mapping bảng</h3>
+      <p>Ví dụ:</p>
+      <ul>
+        <li>Tìm <span class="jp">項目名</span> của tài liệu cần làm.</li>
+        <li>Mapping từ 2 bảng cũ:
+          <ul>
+            <li><span class="jp">新docomoID発行者情報</span></li>
+            <li><span class="jp">新docomoID未発行者情報</span></li>
+          </ul>
+        </li>
+        <li>Sang 3 bảng mới:
+          <ul>
+            <li><span class="jp">dアカウント情報</span></li>
+            <li><span class="jp">携帯事業</span></li>
+            <li><span class="jp">CF事業</span></li>
+          </ul>
+        </li>
+      </ul>
+      <p>Các ô có dấu tròn <strong>(〇)</strong> trong bảng là các quan hệ mapping tương ứng.</p>
+
+      <h3>4.3. Cách ghi note trong tài liệu</h3>
+      <p>Ví dụ mapping cụ thể:</p>
+      <div class="note">
+        <p><strong>DB表「新docomoID発行者情報」 → DB表「dアカウント情報」</strong></p>
+        <p>Ghi note:</p>
+        <p><span class="jp">DB表「新docomoID発行者情報」、DB表「新docomoID未発行者情報」は27v1long移行完了後から使用しない。</span></p>
+      </div>
+
+      <p>Trường hợp bảng không còn sử dụng, ghi note:</p>
+      <div class="note">
+        <p><span class="jp">27v1long移行後は、使用しないプロセス</span></p>
+      </div>
+
+      <h3>4.4. Tài liệu tham khảo</h3>
+      <ul>
+        <li>Tham khảo <span class="jp">IK509</span> để xem cách viết chi tiết.</li>
+      </ul>
+    </section>
+
+    <section id="excel" class="card">
+      <h2>5. Cách viết tài liệu <span class="jp">.excel</span></h2>
+
+      <h3>5.1. Bối cảnh và vấn đề chính</h3>
+      <p>Hệ thống hiện tồn tại 2 luồng xử lý:</p>
+      <ul>
+        <li><strong>旧ルート (Old route)</strong>: xử lý theo DB / Table cũ</li>
+        <li><strong>新ルート (New route)</strong>: xử lý theo DB / Table mới</li>
+      </ul>
+      <p>Khi request vào hệ thống (văn bản / 電文), cần quyết định dùng xử lý cũ hay xử lý mới.</p>
+
+      <h3>5.2. Thiết kế / hướng xử lý</h3>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <span class="badge info">A</span>
+          <h3>Tạo 共通ルート</h3>
+          <p>Gom những phần xử lý mà dù đi old hay new route đều cần dùng, sau đó mới phân nhánh.</p>
+          <ul>
+            <li>電文パラメータチェック</li>
+            <li>DB異常時のリトライループ処理</li>
+          </ul>
+        </div>
+        <div class="summary-item">
+          <span class="badge info">B</span>
+          <h3>Common processing do vendor khác thực hiện</h3>
+          <p>Vendor khác cung cấp search + decision để xác định đi old route hay new route.</p>
+        </div>
+        <div class="summary-item">
+          <span class="badge info">C</span>
+          <h3>Chính sách phân nhánh</h3>
+          <p>Có nhánh từ 共通ルート sang 旧ルート hoặc 新ルート. Không làm nhánh 旧→新 trong scope lần này.</p>
+        </div>
+      </div>
+
+      <h3>5.3. Phân loại trạng thái user</h3>
+      <ol>
+        <li><strong>未移行</strong>: chưa migrate, dữ liệu còn ở old → đi <strong>旧ルート</strong></li>
+        <li><strong>移行済み</strong>: đã migrate → đi <strong>新ルート</strong></li>
+        <li><strong>新規ユーザー</strong>: user đăng ký mới → đi <strong>新ルート</strong></li>
+      </ol>
+      <p>Lý do phải giữ cả 2 route là vì việc migrate không diễn ra đồng loạt và cần hạn chế chỉnh sửa vào old route càng nhiều càng tốt.</p>
+
+      <h3>5.4. Yêu cầu về deliverable / cấu trúc sheet</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Sheet</th>
+            <th>Nội dung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="jp">共通ルートシート</span></td>
+            <td>Mô tả common route, common processing, search + decision và phần phân nhánh</td>
+          </tr>
+          <tr>
+            <td><span class="jp">旧ルートシート</span></td>
+            <td>Mô tả xử lý cho user chưa migrate, có truy cập old table</td>
+          </tr>
+          <tr>
+            <td><span class="jp">新ルートシート</span></td>
+            <td>Mô tả xử lý cho user đã migrate / user mới, có truy cập new table</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>5.5. Trường hợp common processing chưa rõ chi tiết</h3>
+      <ul>
+        <li>Chưa xác định được search query cụ thể, điều kiện WHERE, key search, rule ưu tiên và logic decision chi tiết.</li>
+        <li>Vì vậy, trong tài liệu cần dùng <span class="jp">オートシェイプ</span> để đánh dấu phần sẽ được vendor khác bổ sung.</li>
+        <li>Đặc biệt với phần search processing, cần đặt placeholder thể hiện rõ sẽ có điều kiện search cho old/new.</li>
+      </ul>
+
+      <h3>5.6. Yêu cầu chỉnh sửa pattern matrix / plot chức năng</h3>
+      <p>Dựa trên <span class="jp">プロット表 / パターンマトリクス</span> và nội dung tài liệu:</p>
+      <ul>
+        <li>Nếu Old route / New route có phần cần đối ứng theo chức năng đang xử lý, thì bổ sung hoặc chỉnh sửa mô tả vào sheet tương ứng.</li>
+        <li>Ví dụ: <span class="jp">IR006</span>, <span class="jp">IK...</span></li>
+      </ul>
+    </section>
+
+    <section id="flow" class="card">
+      <h2>6. Thứ tự làm việc đề xuất</h2>
+      <ol>
+        <li>Kiểm tra <span class="jp">機能変更対応マトリクス（担当会社プロットVer）</span> để xác định IK / IR / command cần làm.</li>
+        <li>Mở <span class="jp">DD_機能-成果物紐づけ一覧</span> và xác nhận tài liệu phụ trách ở cột <span class="jp">[担当]</span>.</li>
+        <li>Kiểm tra cột <span class="jp">[修正対象]</span> để xác định tài liệu nào bắt buộc sửa, tài liệu nào cần kiểm tra thêm.</li>
+        <li>Ghi kết quả vào cột <span class="jp">[確認結果]</span>.</li>
+        <li>Tham khảo <span class="jp" contenteditable="true">Sơ đồ mapping tài liệu onboarding</span> để xác định cách đọc và tài liệu liên quan.</li>
+        <li>Tiến hành chỉnh sửa tài liệu:
+          <ul>
+            <li>Nếu là <strong>.doc</strong> → mapping old/new table và bổ sung note đúng quy tắc.</li>
+            <li>Nếu là <strong>.excel</strong> → tổ chức nội dung theo 3 sheet: 共通 / 旧 / 新 route.</li>
+          </ul>
+        </li>
+        <li>Trong quá trình làm, cập nhật % tiến độ vào các cột: 作成/修正, 自己レビュー, FPT内部レビュー, NECレビュー.</li>
+      </ol>
+    </section>
+
+    
+  </main>
+</body>
+</html>
